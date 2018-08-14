@@ -1,0 +1,122 @@
+1.环境安装
+node 
+
+2.vue:渐进式框架，易用，灵活，高效
+没有太多限制的js框架
+对比angular：非常重，不太容易和其他类库结合
+
+3.使用
+	(1)CDN
+	(2)CLI：脚手架
+
+4.特色
+methods和computed
+methods中的方法触发执行的时候，所有的方法都会执行，消耗性能，computed不会
+
+v-if:元素会不存在
+v-show:元素只是隐藏
+
+v-for:用在div上是会重复创建容器元素，最好使用template,但是使用template时就不能在template上绑定其他的数据了
+
+组件：
+1.组件的模板只有一个根标签
+2.组件的data是一个函数返回值是对象，不然会将data暴漏到全局中称为一公用的对象
+
+
+
+Vue CLI脚手架开发
+1.通过webpack搭建的开发环境
+2.使用ES6语法
+3.打包和压缩js为一个文件
+4.项目文件在环境中编译，而不是浏览器中
+5.实现页面自动刷新
+
+Vue-cli2.x
+npm install -g vue-cli
+vue init webpack vue-playlist
+vue run dev
+
+
+项目文件简介：
+build/:构建客户端和服务端，改变端口号
+config/:对应项目相关的配置
+static/:静态文件存放目录
+.gitgnore:git提交忽略文件
+index.html:当前项目的入口文件
+package.json:项目需要安装的依赖包和运行脚本命令
+README.md：对应项目运行的相关指令
+.editorconfig:编辑配置文件
+src/:项目主要存放和编辑的目录
+
+
+
+SRC/简介：
+1.assets/:一些图片
+2.components/:一些组件
+3.App.vue:根组件
+4.main.js:和index.html直接关联，
+
+组件作用域：
+子组件作用域大于父组件
+style可以通过scoped来区分
+
+组件间的传值（值和引用）：
+1.父组件将数据传入子组件
+父组件提供数据源，绑定数据源到子组件的属性上，子组件通过props接受属性中的数据源；
+注：避免直接在子组件中改变父组件传过来的值
+
+2.子组件通过事件将值传给父组件
+子组件通过注册$emit事件将值传递给父组件，父组件通过绑定自定义事件接收子组件传过来的值
+
+
+生命周期：
+1.new Vue():实例化当前Vue对象
+2.beforeCreate:没有创建Vue对象之前，对一些事件进行配置比如加载动画
+3.created:实例已经被创建好了，组件也已经创建好了，事件也已经绑定好了，但是dom还没有生成，el属性还不存在，比如：请求一些数据然后将数据赋给属性，结束加载动画，此时页面还没出现
+4.beforeMount:开始编译当前模板，还没挂载完，看不到页面
+5.mounted:模板编译完了，页面已经显出来了，Dom已经生成了，可以做数据请求
+6.beforeUpdated:组件在更新之前
+7.updated:组件已经更新好了，页面已经更新
+8.beforeDestroy:
+9.destroy:
+
+
+npm install vue-router --save-dev
+路由：不用每次都请求，直接显示到要显示的位置和页面;
+a标签：每次都请求，刷新页面
+页面直接的跳转
+
+main.js
+Vue.use(VueRouter);
+const router=new VueRouter({
+	routes:[
+		{path:'/',component:Home}
+		...
+	],
+	mode:'history'
+})
+
+new Vue({
+	router,
+	el:'#app'
+})
+
+
+app.vue:
+<ul>
+	<li><router-link to="/"></router-link></li>
+</ul>
+<router-view></router-view>
+
+
+http:
+npm install vue-resource --save-dev
+和路由类似
+main.js
+Vue.use(VueRouter);
+
+
+
+
+
+
