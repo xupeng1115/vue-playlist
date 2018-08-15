@@ -5,7 +5,7 @@
 const path = require('path');
 const os=require('os');
 const networkInterfaces=os.networkInterfaces();
-let ip=networkInterfaces['WLAN']?networkInterfaces['WLAN'][1].address:(networkInterfaces['以太网']?networkInterfaces['以太网'][1].address:localhost);
+let ip=networkInterfaces['WLAN']?networkInterfaces['WLAN'][1].address:(networkInterfaces['以太网']?networkInterfaces['以太网'][1].address:(networkInterfaces['本地连接']?networkInterfaces['本地连接'][1].address:'localhost'));
 
 module.exports = {
   dev: {
